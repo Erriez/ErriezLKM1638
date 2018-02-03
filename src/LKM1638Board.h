@@ -86,38 +86,37 @@ public:
   virtual void setSegmentsDigit(uint8_t pos, uint8_t leds);
   virtual void setDigit(uint8_t pos, uint8_t digit);
 
-  // Notes: 
-  // - Overloaded functions with default arguments may not be virtual.
-  // - Overloaded functions with default arguments are not allowed.
+  // Notes:  Overloaded functions with default arguments are not allowed, so
+  // create multiple functions with different number of arguments.
 
   // Display unsigned value 8, 16 or 32-bit with optional padding
-  void print(uint8_t value);
-  void print(uint8_t value, uint8_t radius);
-  void print(uint8_t value, uint8_t radius, uint8_t maxDigits);
-  void print(uint8_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+  virtual void print(uint8_t value);
+  virtual void print(uint8_t value, uint8_t radius);
+  virtual void print(uint8_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(uint8_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
-  void print(uint16_t value);
-  void print(uint16_t value, uint8_t radius);
-  void print(uint16_t value, uint8_t radius, uint8_t maxDigits);
-  void print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+  virtual void print(uint16_t value);
+  virtual void print(uint16_t value, uint8_t radius);
+  virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
-  void print(uint32_t value);
-  void print(uint32_t value, uint8_t radius);
-  void print(uint32_t value, uint8_t radius, uint8_t maxDigits);
-  void print(uint32_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+  virtual void print(uint32_t value);
+  virtual void print(uint32_t value, uint8_t radius);
+  virtual void print(uint32_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(uint32_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
   // Display signed value 8, 16 or 32-bit
-  void print(int8_t value);
-  void print(int8_t value, uint8_t radius);
-  void print(int8_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(int8_t value);
+  virtual void print(int8_t value, uint8_t radius);
+  virtual void print(int8_t value, uint8_t radius, uint8_t maxDigits);
 
-  void print(int16_t value);
-  void print(int16_t value, uint8_t radius);
-  void print(int16_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(int16_t value);
+  virtual void print(int16_t value, uint8_t radius);
+  virtual void print(int16_t value, uint8_t radius, uint8_t maxDigits);
 
-  void print(int32_t value);
-  void print(int32_t value, uint8_t radius);
-  void print(int32_t value, uint8_t radius, uint8_t maxDigits);
+  virtual void print(int32_t value);
+  virtual void print(int32_t value, uint8_t radius);
+  virtual void print(int32_t value, uint8_t radius, uint8_t maxDigits);
 
 private:
   uint8_t _pos;
