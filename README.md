@@ -19,8 +19,7 @@ This board supports:
 [eBay.com](https://www.ebay.com/itm/8xDigital-Tube-8x-Key-8x-Double-Color-LED-Module-TM1638-For-AVR-Arduino-NEW/172744309516?epid=814196876&hash=item28385cfb0c:g:bmsAAOSw-29ZS4-c)  
 Many more...
 
-**Note:**   
-This library has not been tested with "LED&KEY" board.
+**Note:** This library has not been tested with a different "LED&KEY" board.
 
 ## Hardware
 
@@ -54,6 +53,8 @@ Radius:    DEC for decimal, HEX for hexadecimal, BIN for binary
 MaxDigits: Reserve a number of digits to print a value
 Pad:       Display fixed number of digits with 0 padding
 Overflow:  Value does not fit on the display, display minus chars
+LSB:       Most right digit, dual color LED8 or switch (SW8)
+MSB:       Most left digit,  dual color LED1 or switch (SW1)
 ```
 
 ## Usage
@@ -69,6 +70,128 @@ Overflow:  Value does not fit on the display, display minus chars
   
 // Create LKM1638 board
 LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+```
+
+### Read 8 buttons
+Buttons are 8-bit with bit 7 most left switch, bit 0 most right switch.
+
+Note: The text on the board counts from S1 to S8!
+
+```c++
+uint8_t buttons = lkm1638.getButtons();
+```
+
+### Control 8 dual color LED's
+Dual color LED 7 = most left (Text LED8)  
+Dual color LED 0 = most right (Text LED0)
+
+```c++
+// Turn LED 0 red on (firt LED on the right)
+lkm1638.setColorLED(0, LedRed);  
+  
+// Turn LED 0 green on
+lkm1638.setColorLED(0, LedGreen);
+  
+// Turn LED 0 off
+lkm1638.setColorLED(0, LedOff);
+  
+// Turn multiple LEDs on, color red
+lkm1638.colorLEDsOn(0xA9, LedRed);
+  
+// Turn multiple LEDs off
+lkm1638.colorLEDsOff(0x1F);
+```
+
+### Clear display
+```c++
+lkm1638.clear();
+```
+
+### Set/get print display position
+The print position can be set from 0..7.  
+7 = most left digit  
+0 = most right digit
+
+```c++
+// Set postion 4
+lkm1638.setPrintPos(4);
+  
+// Get print position
+uint8_t pos = lkm1638.getPrintPos();
+```
+
+### Print variable on 7-segment display
+Printing starts from digit right to left with an optional maximum number of 
+digits. 
+
+Minus '-' chars will be displayed when the value is out of range, or
+does not fit on the display.
+
+Optional padding can be used to display zero's. This is for example useful to 
+print hours and minutes with fixed 2 digits.  
+
+```c++
+// Print int16_t on print position
+lkm1638.print(1234);
+  
+// Print signed 32-bit value
+lkm1638.print(-1234567);
+  
+// Print 16-bit unsigned casted value
+lkm1638.print((uint16_t)65535);
+  
+// Print 16-bit hexadecimal unsigned value
+uint16_t value = 0xBEEF;
+lkm1638.print(value, HEX); 
+  
+// Print value with maximum 2 digits
+uint8_t value = 99;
+lkm1638.print(value++, DEC, 2);
+  
+// Print -- when value is greater than 2 digits 
+lkm1638.print(value, DEC, 2); 
+  
+// Print 16-bit unsigned value with max 4 digits and 4 digits padding: 0009 
+uint16_t value = 9;
+lkm1638.print(value, DEC, 4, 4);
+  
+// Print 32-bit unsigned value
+lkm1638.print(12345678UL);
+  
+// Print binary uint8_t 0xA9 = 10101001
+uint8_t value = 0xA9;
+lkm1638.print(value, BIN, 8, 8);
+```
+
+### Control 8 display dots
+```c++
+// Turn one dot on in digit 7 (most left)
+lkm1638.dotOn(7);
+  
+// Turn one dot off in digit 0 (most right)
+lkm1638.dotOff(0);
+  
+// Set multiple dots on and off
+lkm1638.setDots(0x85);
+```
+
+### Display special characters
+```c++
+// Turn digit off
+lkm1638.setSegmentsDigit(5, SEGMENTS_OFF);
+  
+// Display minus character
+lkm1638.setSegmentsDigit(4, SEGMENTS_MINUS);
+  
+// Display degree selsius symbol + C
+lkm1638.setSegmentsDigit(1, SEGMENTS_DEGREE);
+lkm1638.setSegmentsDigit(0, SEGMENTS_C);
+```
+
+### Write a custom character to the display
+```c++
+// Display single LED in a digit
+lkm1638.setSegmentsDigit(0, 0b0001000);
 ```
 
 ## Installation
