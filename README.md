@@ -31,12 +31,17 @@ Connect the following pins to the Arduino DIGITAL pins:
 * STB (Chip select)
 * CLK (Clock) 
 
+Note: Some Arduino boards cannot deliver enough 5V power to drive the display.
+
 ## Example
 Examples | JY-LKM1638:
 * [Brightness](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Brightness/Brightness.ino)  
 * [Buttons](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Buttons/Buttons.ino)  
-* [Counter](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Counter/Counter.ino)  
-* [Temperature](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Temperature/Temperature.ino)  
+* [Counter](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Counter/Counter.ino)
+* [Date](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Date/Date.ino)
+* [Demo](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Demo/Demo.ino)  
+* [Temperature](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Temperature/Temperature.ino)
+* [TestLEDs](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/TestLEDs/TestLEDs.ino)  
 * [Time](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Time/Time.ino)
 
 ## Terms:
