@@ -28,7 +28,12 @@
  *   https://github.com/Erriez/ArduinoLibraryLKM1638
  */
 
+#if (defined(__AVR__))
 #include <avr/pgmspace.h>
+#else
+#include <pgmspace.h>
+#endif
+
 #include "LKM1638Board.h"
 
 /* 7-segment bits:
