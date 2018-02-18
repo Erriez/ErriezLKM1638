@@ -2,7 +2,7 @@
 
 This is a JY-MCU JY-LKM1638 library for Arduino. 
 
-![JY-LKM1638](https://raw.githubusercontent.com/Erriez/ArduinoLibraryLKM1638/master/extras/LKM1638_board.jpg)
+![JY-LKM1638](https://raw.githubusercontent.com/Erriez/ErriezLKM1638/master/extras/LKM1638_board.jpg)
 
 This board supports:
 * 3-wire serial interface
@@ -32,16 +32,16 @@ Connect the following pins to the Arduino DIGITAL pins:
 
 Note: Some Arduino boards cannot deliver enough 5V power to drive the display.
 
-## Example
+## Examples
 Examples | JY-LKM1638:
-* [Brightness](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Brightness/Brightness.ino)  
-* [Buttons](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Buttons/Buttons.ino)  
-* [Counter](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Counter/Counter.ino)
-* [Date](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Date/Date.ino)
-* [Demo](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Demo/Demo.ino)  
-* [Temperature](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Temperature/Temperature.ino)
-* [TestLEDs](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/TestLEDs/TestLEDs.ino)  
-* [Time](https://github.com/Erriez/ArduinoLibraryLKM1638/blob/master/examples/Time/Time.ino)
+* [Brightness](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Brightness/Brightness.ino)  
+* [Buttons](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Buttons/Buttons.ino)  
+* [Counter](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Counter/Counter.ino)
+* [Date](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Date/Date.ino)
+* [Demo](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Demo/Demo.ino)  
+* [Temperature](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Temperature/Temperature.ino)
+* [TestLEDs](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/TestLEDs/TestLEDs.ino)  
+* [Time](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Time/Time.ino)
 
 ## Terms:
 ```
@@ -197,12 +197,13 @@ lkm1638.setSegmentsDigit(0, 0b0001000);
 ## Installation
 1. Start the Arduino IDE.
 2. Download the latest version from:  
-   https://github.com/Erriez/ArduinoLibraryLKM1638/archive/master.zip  
+   https://github.com/Erriez/ErriezLKM1638/archive/master.zip  
    and  
-   https://github.com/Erriez/ArduinoLibraryTM1638/archive/master.zip
+   https://github.com/Erriez/ErriezTM1638/archive/master.zip
 3. Click Sketch | Include Library | Add .ZIP Library... and select this ZIP.
 5. Run the example.
 
 ## Library dependencies
-* [TM1638](https://github.com/Erriez/ArduinoLibraryTM1638)  
-```git clone https://github.com/Erriez/ArduinoLibraryTM1638.git```
+* [TM1638](https://github.com/Erriez/ErriezTM1638)  
+```git clone https://github.com/Erriez/ErriezTM1638.git```
+

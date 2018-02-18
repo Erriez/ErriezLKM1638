@@ -24,8 +24,8 @@
 
 /* JY-LKM1638 board v1.1 library for Arduino
  *
- *   https://github.com/Erriez/ArduinoLibraryTM1638
- *   https://github.com/Erriez/ArduinoLibraryLKM1638
+ *   https://github.com/Erriez/ErriezTM1638
+ *   https://github.com/Erriez/ErriezLKM1638
  */
 
 #ifndef LKM1638_BOARD_H__
