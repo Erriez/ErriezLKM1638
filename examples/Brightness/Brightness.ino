@@ -48,7 +48,7 @@ void setup()
   Serial.begin(115200);
   Serial.println(F("JY-LKM1638 brightness example"));
 
-  // Display a decimal 32-bit signed value
+  // Display a decimal unsigned value
   lkm1638.print(12345678UL);
 
   // Turn dual color LED's on
