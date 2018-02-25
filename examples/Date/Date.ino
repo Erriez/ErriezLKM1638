@@ -39,6 +39,9 @@
 
 LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
 
+// Function prototype
+void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year);
+
 void setup()
 {
   Serial.begin(115200);

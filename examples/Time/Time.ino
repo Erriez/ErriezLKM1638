@@ -47,6 +47,10 @@ typedef struct {
 
 Time_t tm = { 9, 59, 00 };
 
+// Function prototypes
+void displayTime();
+void incrementTime();
+
 void setup()
 {
   Serial.begin(115200);

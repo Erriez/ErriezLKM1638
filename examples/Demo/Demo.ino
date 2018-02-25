@@ -53,6 +53,11 @@ uint8_t  countDelayInit = 10;
 
 uint8_t brightness = 2;
 
+// Function prototypes
+void handleButtons(void);
+void handleLEDs(void);
+void handleDisplay(void);
+
 void setup()
 {
   Serial.begin(115200);
