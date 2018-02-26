@@ -4,15 +4,15 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 #-------------------------------------------------------------------------------
 # User configuration
 #-------------------------------------------------------------------------------
-# Project name
-set(PROJECT_NAME    LKM1638)
-
-# Set Arduino library directory
+# Set Arduino sketchbook directory
 if(WIN32)
-    set(LIBRARY_DIR     C:/Users/$ENV{USERNAME}/Documents/Arduino/libraries)
+    set(SKETCHBOOK_DIR     C:/Users/$ENV{USERNAME}/Documents/Arduino)
 elseif(UNIX)
-    set(LIBRARY_DIR     $ENV{HOME}/Arduino/libraries)
+    set(SKETCHBOOK_DIR     $ENV{HOME}/Arduino/libraries)
 endif()
+
+# Configure one sketch
+set(SKETCH              examples/TestLEDs/TestLEDs.ino)
 
 # Configure board, default Arduino UNO
 set(BOARD               uno)
@@ -25,10 +25,7 @@ if(${BOARD} STREQUAL nano)
     set(nano.build.mcu atmega328p)
 endif()
 
-# Configure sketch
-set(SKETCH              examples/TestLEDs/TestLEDs.ino)
-
-# Configure serial port
+# Configure serial port:
 if(WIN32)
     set(SERIAL_PORT     COM1)
 elseif(UNIX)
@@ -38,27 +35,31 @@ endif()
 #-------------------------------------------------------------------------------
 # Project configuation
 #-------------------------------------------------------------------------------
+# Project name
+set(PROJECT_NAME            ErriezLKM1638)
+
 # Configure project
 project(${PROJECT_NAME})
 
-# print_board_list()
-
-set(TM1638_LIBRARY_DIR      ${LIBRARY_DIR}/ArduinoLibraryTM1638/src)
-set(LKM1638_LIBRARY_DIR     ${LIBRARY_DIR}/ArduinoLibraryLKM1638/src)
+# Set library directories
+set(TM1638_LIBRARY_DIR      ${SKETCHBOOK_DIR}/libraries/ErriezTM1638/src)
+set(LKM1638_LIBRARY_DIR     ${SKETCHBOOK_DIR}/libraries/${PROJECT_NAME}/src)
 
 include_directories(
         ${TM1638_LIBRARY_DIR}
         ${LKM1638_LIBRARY_DIR}
 )
 
+# Generate library
 generate_arduino_library(
         TM1638Lib
         SRCS
-        ${TM1638_LIBRARY_DIR}/TM1638.cpp
+            ${TM1638_LIBRARY_DIR}/TM1638.cpp
         HDRS
-        ${TM1638_LIBRARY_DIR}/TM1638.h
+            ${TM1638_LIBRARY_DIR}/TM1638.h
 )
 
+# Generate library
 generate_arduino_library(
         LKM1638Lib
         SRCS
@@ -67,9 +68,9 @@ generate_arduino_library(
             ${LKM1638_LIBRARY_DIR}/LKM1638Board.h
 )
 
+# Configure project
 set(${CMAKE_PROJECT_NAME}_SKETCH    ${SKETCH})
 set(${CMAKE_PROJECT_NAME}_LIBS      TM1638Lib LKM1638Lib)
 set(${CMAKE_PROJECT_NAME}_BOARD     ${BOARD})
 set(${CMAKE_PROJECT_NAME}_PORT      ${SERIAL_PORT})
-
 generate_arduino_firmware(${CMAKE_PROJECT_NAME})
