@@ -45,6 +45,9 @@ int8_t count = 20;
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 counter example"));
   Serial.println(F("Counting..."));
 

@@ -54,6 +54,9 @@ void incrementTime();
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 time example"));
   Serial.println(F("Display time..."));
 

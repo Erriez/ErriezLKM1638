@@ -61,6 +61,9 @@ void handleDisplay(void);
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 demo"));
   Serial.println(F("Press a button:"));
   Serial.println(F("  SW1: Start/stop counting"));

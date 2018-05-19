@@ -45,6 +45,9 @@ void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year);
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 time example"));
   Serial.println(F("Display date..."));
 

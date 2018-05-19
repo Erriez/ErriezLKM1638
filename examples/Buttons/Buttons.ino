@@ -46,6 +46,9 @@ uint8_t lastKeys = 0;
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 button example"));
   Serial.println(F("Press one or more buttons at the same time..."));
 }

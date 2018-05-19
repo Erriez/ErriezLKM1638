@@ -42,6 +42,9 @@ LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 test LED example"));
 
   // Set brightness

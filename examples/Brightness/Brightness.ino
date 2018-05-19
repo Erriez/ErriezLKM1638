@@ -46,6 +46,9 @@ uint8_t brightness = 0;
 void setup()
 {
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
   Serial.println(F("JY-LKM1638 brightness example"));
 
   // Display a decimal unsigned value
