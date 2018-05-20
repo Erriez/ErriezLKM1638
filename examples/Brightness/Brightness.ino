@@ -33,45 +33,65 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
+// Initialize brightness variable with value 0
+static uint8_t brightness = 0;
 
-// Initialize global brightness variable with 0
-uint8_t brightness = 0;
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 brightness example"));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 brightness example"));
 
-  // Display a decimal unsigned value
-  lkm1638.print(12345678UL);
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
 
-  // Turn dual color LED's on
-  lkm1638.colorLEDsOn(0xF0, LedRed);
-  lkm1638.colorLEDsOn(0x0F, LedGreen);
+    // Display a decimal unsigned value
+    lkm1638.print(12345678UL);
+
+    // Turn dual color LED's on
+    lkm1638.colorLEDsOn(0xF0, LedRed);
+    lkm1638.colorLEDsOn(0x0F, LedGreen);
 }
 
 void loop()
 {
-  // Set brightness
-  lkm1638.setBrightness(brightness);
+    // Set brightness
+    lkm1638.setBrightness(brightness);
 
-  Serial.print(F("Brightness: "));
-  Serial.println(brightness);
+    Serial.print(F("Brightness: "));
+    Serial.println(brightness);
 
-  // Increase brightness
-  if (brightness++ >= 7) {
-    brightness = 0;
-  }
+    // Increase brightness
+    if (brightness >= 7) {
+        brightness = 0;
+    } else {
+        brightness++;
+    }
 
-  // Wait a second
-  delay(1000);
+    // Wait a second
+    delay(1000);
 }

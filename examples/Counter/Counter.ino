@@ -33,42 +33,59 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
-// Initialize global count variable with a value
-int8_t count = 20;
+// Initialize static count variable with a value
+static int8_t count = 20;
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 counter example"));
-  Serial.println(F("Counting..."));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 counter example"));
+    Serial.println(F("Counting..."));
 
-  // Set brightness
-  lkm1638.setBrightness(2);
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
+    lkm1638.setBrightness(2);
 
-  // Set default print position
-  lkm1638.setPrintPos(5);
+    // Set default print position
+    lkm1638.setPrintPos(5);
 }
 
 void loop()
 {
-  // Print count on serial
-  Serial.println(count);
+    // Print count on serial
+    Serial.println(count);
 
-  // Display count on the left of the display
-  // It displays --- when count does not fit on the screen anymore
-  lkm1638.print(count, DEC);
+    // Display count on the left of the display
+    // It displays --- when count does not fit on the screen anymore
+    lkm1638.print(count, DEC);
 
-  // Decrement count
-  count--;
+    // Decrement count
+    count--;
 
-  delay(100);
+    delay(100);
 }

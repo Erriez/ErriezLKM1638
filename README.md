@@ -1,13 +1,13 @@
 # JY-LKM1638 7-segment display / button library for Arduino
 
-This is a JY-MCU JY-LKM1638 library for Arduino. 
+This is a JY-MCU JY-LKM1638 library for Arduino.
 
 ![JY-LKM1638](https://raw.githubusercontent.com/Erriez/ErriezLKM1638/master/extras/LKM1638_board.jpg)
 
 This board supports:
 * 3-wire serial interface
 * TM1638 LED driver and key-scan chip
-* 5V power +/- 10%
+* Power: 3.3V .. 5V
 * 8 digits 7-segment display
 * 8 dual color LEDs 
 * 8 buttons
@@ -30,7 +30,17 @@ Connect the following pins to the Arduino DIGITAL pins:
 * STB (Chip select)
 * CLK (Clock) 
 
-Note: Some Arduino boards cannot deliver enough 5V power to drive the display.
+Note: Some Arduino boards cannot deliver enough 5V power to drive the LED's.
+
+### Pins
+
+| Pin  | LKM-1638 | Arduino UNO / Nano / Mega2560 / Leonardo / Pro Micro | Node MCU | LOLIN32 |
+| :--: | :------: | :--------------------------------------------------: | :------: | :-----: |
+|  1   |   VCC    |                     5V (or 3.3V)                     |   GND    |   GND   |
+|  2   |   GND    |                         GND                          |   3V3    |   3V3   |
+|  3   |   CLK    |                    Digital pin 2                     |    D2    |    0    |
+|  4   |   DIO    |                    Digital pin 3                     |    D3    |    4    |
+|  5   |   STB1   |                    Digital pin 4                     |    D4    |    5    |
 
 ## Examples
 Examples | JY-LKM1638:
@@ -64,12 +74,18 @@ MSB:       Most left digit,  dual color LED1 or switch (SW1)
 #include <LKM1638Board.h>
   
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#define TM1638_CLK_PIN   2
+#define TM1638_DIO_PIN   3
+#define TM1638_STB0_PIN  4
   
 // Create LKM1638 board
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
+
+void setup()
+{
+    // Initialize LKM1638Board
+    lkm1638.begin();
+}
 ```
 
 ### Read 8 buttons

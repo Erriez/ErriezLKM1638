@@ -12,7 +12,14 @@ elseif(UNIX)
 endif()
 
 # Configure one sketch
+# set(SKETCH              examples/Brightness/Brightness.ino)
+# set(SKETCH              examples/Buttons/Buttons.ino)
+# set(SKETCH              examples/Counter/Counter.ino)
+# set(SKETCH              examples/Date/Date.ino)
+# set(SKETCH              examples/Demo/Demo.ino)
+# set(SKETCH              examples/Temperature/Temperature.ino)
 set(SKETCH              examples/TestLEDs/TestLEDs.ino)
+# set(SKETCH              examples/Time/Time.ino)
 
 # Configure board, default Arduino UNO
 set(BOARD               uno)

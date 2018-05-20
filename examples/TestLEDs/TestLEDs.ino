@@ -33,84 +33,101 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 test LED example"));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 test LED example"));
 
-  // Set brightness
-  lkm1638.setBrightness(2);
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
+    lkm1638.setBrightness(2);
 }
 
 void loop()
 {
-  Serial.print(F("Testing LEDs..."));
+    Serial.print(F("Testing LEDs..."));
 
-  // Dual color LED's
-  for (uint8_t count = 0; count < 3; count++) {
-    for (uint8_t led = 0; led < 8; led++) {
-      lkm1638.setColorLED(led, LedRed);
-      delay(50);
+    // Dual color LED's
+    for (uint8_t count = 0; count < 3; count++) {
+        for (uint8_t led = 0; led < 8; led++) {
+            lkm1638.setColorLED(led, LedRed);
+            delay(50);
+        }
+
+        for (uint8_t led = 0; led < 8; led++) {
+            lkm1638.setColorLED(led, LedGreen);
+            delay(50);
+        }
+
+        for (uint8_t led = 0; led < 8; led++) {
+            lkm1638.setColorLED(led, LedOff);
+            delay(50);
+        }
+        delay(400);
     }
 
-    for (uint8_t led = 0; led < 8; led++) {
-      lkm1638.setColorLED(led, LedGreen);
-      delay(50);
+    // 7-segments display dots from right to left and back
+    for (uint8_t count = 0; count < 3; count++) {
+        for (uint8_t digit = 0; digit < 8; digit++) {
+            lkm1638.setDots((uint8_t)(1 << digit));
+            delay(50);
+        }
+        for (int8_t digit = 7; digit >= 0; digit--) {
+            lkm1638.setDots((uint8_t)(1 << digit));
+            delay(50);
+        }
+        delay(400);
+        lkm1638.setDots(0);
     }
 
-    for (uint8_t led = 0; led < 8; led++) {
-      lkm1638.setColorLED(led, LedOff);
-      delay(50);
-    }
-    delay(400);
-  }
-
-  // 7-segments display dots from right to left and back
-  for (uint8_t count = 0; count < 3; count++) {
-    for (uint8_t digit = 0; digit < 8; digit++) {
-      lkm1638.setDots((uint8_t)(1<<digit));
-      delay(50);
-    }
-    for (int8_t digit = 7; digit >=0; digit--) {
-      lkm1638.setDots((uint8_t)(1<<digit));
-      delay(50);
-    }
-    delay(400);
-    lkm1638.setDots(0);
-  }
-
-  // 7-segments display all digits counting from 0..F
-  for (uint8_t value = 0; value <= 0x10; value++) {
-    for (uint8_t digit = 0; digit < 8; digit++) {
-      lkm1638.setDigit(digit, value);
-    }
-    delay(400);
-  }
-
-  // 7-segments display shifting digits from right to left 0..F
-  for (uint8_t value = 0; value <= 0x10; value++) {
-    for (uint8_t digit = 0; digit < 8; digit++) {
-      lkm1638.setDigit(digit, value);
-      delay(80);
-    }
-  }
-
-  // 7-segments display count individual digits
-  for (uint8_t digit = 0; digit < 8; digit++) {
+    // 7-segments display all digits counting from 0..F
     for (uint8_t value = 0; value <= 0x10; value++) {
-      lkm1638.setDigit(digit, value);
-      delay(100);
+        for (uint8_t digit = 0; digit < 8; digit++) {
+            lkm1638.setDigit(digit, value);
+        }
+        delay(400);
     }
-  }
 
-  Serial.println(F("Done"));
+    // 7-segments display shifting digits from right to left 0..F
+    for (uint8_t value = 0; value <= 0x10; value++) {
+        for (uint8_t digit = 0; digit < 8; digit++) {
+            lkm1638.setDigit(digit, value);
+            delay(80);
+        }
+    }
+
+    // 7-segments display count individual digits
+    for (uint8_t digit = 0; digit < 8; digit++) {
+        for (uint8_t value = 0; value <= 0x10; value++) {
+            lkm1638.setDigit(digit, value);
+            delay(100);
+        }
+    }
+
+    Serial.println(F("Done"));
 }

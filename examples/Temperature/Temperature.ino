@@ -33,63 +33,82 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
 // Forward function declaration
-int getTemperature();
+static int getTemperature();
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 temperature example"));
-  Serial.println(F("Simulating temperature..."));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 temperature example"));
+    Serial.println(F("Simulating temperature..."));
+
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
 }
 
 void loop()
 {
-  int temperature;
-  int8_t value;
-  uint8_t remainder;
+    int temperature;
+    int8_t value;
+    uint8_t remainder;
 
-  // Get random temperature
-  temperature = getTemperature();
+    // Get random temperature
+    temperature = getTemperature();
 
-  // Calculate signed temperature
-  value = temperature / 10;
+    // Calculate signed temperature
+    value = temperature / 10;
 
-  // Calculate unsigned remainder temperature (1 digit)
-  if (temperature < 0) {
-    remainder = (uint8_t)(temperature * -1) % 10;
-  } else {
-    remainder = (uint8_t)temperature % 10;
-  }
+    // Calculate unsigned remainder temperature (1 digit)
+    if (temperature < 0) {
+        remainder = (uint8_t)(temperature * -1) % 10;
+    } else {
+        remainder = (uint8_t)temperature % 10;
+    }
 
-  lkm1638.setPrintPos(3);
-  lkm1638.print(value, DEC);
-  lkm1638.setPrintPos(2);
-  lkm1638.print(remainder, DEC, 1);
-  lkm1638.dotOn(3);
-  lkm1638.setSegmentsDigit(1, SEGMENTS_DEGREE);
-  lkm1638.setSegmentsDigit(0, SEGMENTS_C);
+    lkm1638.setPrintPos(3);
+    lkm1638.print(value, DEC);
+    lkm1638.setPrintPos(2);
+    lkm1638.print(remainder, DEC, 1);
+    lkm1638.dotOn(3);
+    lkm1638.setSegmentsDigit(1, SEGMENTS_DEGREE);
+    lkm1638.setSegmentsDigit(0, SEGMENTS_C);
 
-  // Print temperature on serial console
-  Serial.print(value);
-  Serial.print(F("."));
-  Serial.print(remainder);
-  Serial.println(F("`C"));
+    // Print temperature on serial console
+    Serial.print(value);
+    Serial.print(F("."));
+    Serial.print(remainder);
+    Serial.println(F("`C"));
 
-  delay(2000);
+    delay(2000);
 }
 
-int getTemperature()
+static int getTemperature()
 {
-  // Return a random temperature between -25.0 and 100.0 degree Celsius
-  return (int)random(-250, 1000);
+    // Return a random temperature between -25.0 and 100.0 degree Celsius
+    return (int)random(-250, 1000);
 }

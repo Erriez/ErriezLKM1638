@@ -33,29 +33,49 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
 // Function prototype
-void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year);
+static void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year);
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 time example"));
-  Serial.println(F("Display date..."));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 time example"));
+    Serial.println(F("Display date..."));
 
-  // Set brightness
-  lkm1638.setBrightness(2);
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
+    lkm1638.setBrightness(2);
 
-  // Display a fixed date
-  displayDate(31, 1, 18);
+    // Display a fixed date
+    displayDate(31, 1, 18);
+
+    // Set pins in tri-state
+    lkm1638.end();
 }
 
 void loop()
@@ -63,15 +83,15 @@ void loop()
 
 }
 
-void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year)
+static void displayDate(uint8_t dayMonth, uint8_t month, uint8_t year)
 {
-  lkm1638.setPrintPos(6);
-  lkm1638.print(dayMonth, DEC, 2, 2);
-  lkm1638.setPrintPos(3);
-  lkm1638.print(month, DEC, 2, 2);
-  lkm1638.setPrintPos(0);
-  lkm1638.print(year, DEC, 2, 2);
+    lkm1638.setPrintPos(6);
+    lkm1638.print(dayMonth, DEC, 2, 2);
+    lkm1638.setPrintPos(3);
+    lkm1638.print(month, DEC, 2, 2);
+    lkm1638.setPrintPos(0);
+    lkm1638.print(year, DEC, 2, 2);
 
-  lkm1638.setSegmentsDigit(2, SEGMENTS_MINUS);
-  lkm1638.setSegmentsDigit(5, SEGMENTS_MINUS);
+    lkm1638.setSegmentsDigit(2, SEGMENTS_MINUS);
+    lkm1638.setSegmentsDigit(5, SEGMENTS_MINUS);
 }

@@ -33,11 +33,25 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
 typedef struct {
     uint8_t hours;
@@ -45,63 +59,67 @@ typedef struct {
     uint8_t seconds;
 } Time_t;
 
-Time_t tm = { 9, 59, 00 };
+static Time_t tm = { 9, 59, 00 };
 
 // Function prototypes
-void displayTime();
-void incrementTime();
+static void displayTime();
+static void incrementTime();
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 time example"));
-  Serial.println(F("Display time..."));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 time example"));
+    Serial.println(F("Display time..."));
 
-  lkm1638.setBrightness(2);
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
+    lkm1638.setBrightness(2);
 }
 
 void loop()
 {
-  incrementTime();
-  displayTime();
+    incrementTime();
+    displayTime();
 
-  delay(1000);
+    delay(1000);
 }
 
-void displayTime()
+static void displayTime()
 {
-  lkm1638.setPrintPos(4);
-  lkm1638.print(tm.hours, DEC, 2);
-  lkm1638.setPrintPos(2);
-  lkm1638.print(tm.minutes, DEC, 2, 2);
-  lkm1638.setPrintPos(0);
-  lkm1638.print(tm.seconds, DEC, 2, 2);
-  lkm1638.dotOn(2);
-  if (tm.seconds & 1) {
-    lkm1638.dotOn(4);
-  } else {
-    lkm1638.dotOff(4);
-  }
-}
-
-void incrementTime()
-{
-  if (tm.seconds >= 59) {
-    tm.seconds = 0;
-    if (tm.minutes >= 59) {
-      tm.minutes = 0;
-      if (tm.hours >= 23) {
-        tm.hours = 0;
-      } else {
-        tm.hours++;
-      }
+    lkm1638.setPrintPos(4);
+    lkm1638.print(tm.hours, DEC, 2);
+    lkm1638.setPrintPos(2);
+    lkm1638.print(tm.minutes, DEC, 2, 2);
+    lkm1638.setPrintPos(0);
+    lkm1638.print(tm.seconds, DEC, 2, 2);
+    lkm1638.dotOn(2);
+    if (tm.seconds & 1) {
+        lkm1638.dotOn(4);
     } else {
-      tm.minutes++;
+        lkm1638.dotOff(4);
     }
-  } else {
-    tm.seconds++;
-  }
+}
+
+static void incrementTime()
+{
+    if (tm.seconds >= 59) {
+        tm.seconds = 0;
+        if (tm.minutes >= 59) {
+            tm.minutes = 0;
+            if (tm.hours >= 23) {
+                tm.hours = 0;
+            } else {
+                tm.hours++;
+            }
+        } else {
+            tm.minutes++;
+        }
+    } else {
+        tm.seconds++;
+    }
 }

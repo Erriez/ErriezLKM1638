@@ -33,57 +33,76 @@
 #include <LKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
-#define DIO_PIN   2
-#define SCL_PIN   3
-#define STB_PIN   4
+#if defined(ARDUINO_AVR_UNO) || defined(ARDUINO_AVR_NANO) || defined(ARDUINO_AVR_MICRO) || \
+    defined(ARDUINO_AVR_PRO) || defined(ARDUINO_AVR_MEGA2560) || defined(ARDUINO_AVR_LEONARDO)
+#define TM1638_CLK_PIN      2
+#define TM1638_DIO_PIN      3
+#define TM1638_STB0_PIN     4
+#elif defined(ARDUINO_ESP8266_WEMOS_D1MINI) || defined(ARDUINO_ESP8266_NODEMCU)
+#define TM1638_CLK_PIN      D2
+#define TM1638_DIO_PIN      D3
+#define TM1638_STB0_PIN     D4
+#elif defined(ARDUINO_LOLIN32)
+#define TM1638_CLK_PIN      0
+#define TM1638_DIO_PIN      4
+#define TM1638_STB0_PIN     5
+#else
+#error "May work, but not tested on this target"
+#endif
 
-LKM1638Board lkm1638(DIO_PIN, SCL_PIN, STB_PIN);
+// Create LKM1638Board object
+LKM1638Board lkm1638(TM1638_CLK_PIN, TM1638_DIO_PIN, TM1638_STB0_PIN);
 
-// Global variables
-uint8_t keys = 0;
-uint8_t lastKeys = 0;
+// Static variables
+static uint8_t keys = 0;
+static uint8_t lastKeys = 0;
+
 
 void setup()
 {
-  Serial.begin(115200);
-  while (!Serial) {
-    ;
-  }
-  Serial.println(F("JY-LKM1638 button example"));
-  Serial.println(F("Press one or more buttons at the same time..."));
+    Serial.begin(115200);
+    while (!Serial) {
+        ;
+    }
+    Serial.println(F("JY-LKM1638 button example"));
+    Serial.println(F("Press one or more buttons at the same time..."));
+
+    // Initialize TM1638
+    lkm1638.begin();
+    lkm1638.clear();
 }
 
 void loop()
 {
-  // Get buttons
-  keys = lkm1638.getButtons();
+    // Get buttons
+    keys = lkm1638.getButtons();
 
-  // Check if button changed
-  if (lastKeys != keys) {
-    lastKeys = keys;
+    // Check if button changed
+    if (lastKeys != keys) {
+        lastKeys = keys;
 
-    // Display dual color LED
-    for (uint8_t i = 0; i < 8; i++) {
-      if (keys & (1<<i)) {
-        // Button down
+        // Display dual color LED
+        for (uint8_t i = 0; i < 8; i++) {
+            if (keys & (1 << i)) {
+                // Button down
 
-        // Upper 4 LED's red, lower 4 LED's green
-        if (i >= 4) {
-          lkm1638.setColorLED(i, LedRed);
-        } else {
-          lkm1638.setColorLED(i, LedGreen);
+                // Upper 4 LED's red, lower 4 LED's green
+                if (i >= 4) {
+                    lkm1638.setColorLED(i, LedRed);
+                } else {
+                    lkm1638.setColorLED(i, LedGreen);
+                }
+            } else {
+                // Turn LED off when button is up
+                lkm1638.setColorLED(i, LedOff);
+            }
         }
-      } else {
-        // Turn LED off when button is up
-        lkm1638.setColorLED(i, LedOff);
-      }
-    }
 
-    // Print button serial
-    Serial.print(F("0x"));
-    if (keys < 0x10) {
-      Serial.print(0);
+        // Print button serial
+        Serial.print(F("0x"));
+        if (keys < 0x10) {
+            Serial.print(0);
+        }
+        Serial.println(keys, HEX);
     }
-    Serial.println(keys, HEX);
-  }
 }
