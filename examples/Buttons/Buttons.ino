@@ -25,8 +25,8 @@
 /* JY-LKM1638 board v1.1 button example
  *
  * Required libraries:
- *   https://github.com/Erriez/ArduinoLibraryTM1638
- *   https://github.com/Erriez/ArduinoLibraryLKM1638
+ *   https://github.com/Erriez/TM1638
+ *   https://github.com/Erriez/ErriezLKM1638
  */
 
 #include <Arduino.h>
