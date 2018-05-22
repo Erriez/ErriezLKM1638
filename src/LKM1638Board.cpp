@@ -354,8 +354,7 @@ void LKM1638Board::print(uint8_t value, uint8_t radius, uint8_t maxDigits)
  * \param maxDigits Maximum number of digits
  * \param pad Number of digits starting with a 0
  */
-void LKM1638Board::print(uint8_t value, uint8_t radius, uint8_t maxDigits,
-                         uint8_t pad)
+void LKM1638Board::print(uint8_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad)
 {
     writeUnsignedValue(value, radius, maxDigits, pad);
 }
@@ -378,8 +377,7 @@ void LKM1638Board::print(uint16_t value, uint8_t radius, uint8_t maxDigits)
     writeUnsignedValue(value, radius, maxDigits, 1);
 }
 
-void LKM1638Board::print(uint16_t value, uint8_t radius, uint8_t maxDigits,
-                         uint8_t pad)
+void LKM1638Board::print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad)
 {
     writeUnsignedValue(value, radius, maxDigits, pad);
 }
@@ -402,8 +400,7 @@ void LKM1638Board::print(unsigned long value, uint8_t radius, uint8_t maxDigits)
     writeUnsignedValue((uint32_t)value, radius, maxDigits, 1);
 }
 
-void LKM1638Board::print(unsigned long value, uint8_t radius, uint8_t maxDigits,
-                         uint8_t pad)
+void LKM1638Board::print(unsigned long value, uint8_t radius, uint8_t maxDigits, uint8_t pad)
 {
     writeUnsignedValue((uint32_t)value, radius, maxDigits, pad);
 }

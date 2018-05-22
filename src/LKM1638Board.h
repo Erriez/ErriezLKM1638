@@ -128,9 +128,9 @@ public:
     virtual void print(long value, uint8_t radius, uint8_t maxDigits);
 
 protected:
-    uint8_t _leds[NUM_DIGITS];
-    uint8_t _pos;
-    uint8_t _dots;
+    uint8_t _leds[NUM_DIGITS];  //!< LED digits
+    uint8_t _pos;               //!< Print position
+    uint8_t _dots;              //!< Dot LED's
 
     virtual void writeDigit(uint8_t pos);
     virtual void writeUnsignedValue(uint32_t value, uint8_t radius, uint8_t maxDigits,

@@ -60,7 +60,7 @@ static uint8_t ledDelayInit = 30;
 
 static bool countEnable = false;
 static bool countUp = true;
-static unsigned long countValue = 0; // uint32_t is not supported on all targets
+static unsigned long countValue = 0;
 static uint8_t countDelay = 0;
 static uint8_t countDelayInit = 10;
 
