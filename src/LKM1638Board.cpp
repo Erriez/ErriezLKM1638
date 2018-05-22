@@ -384,57 +384,29 @@ void LKM1638Board::print(uint16_t value, uint8_t radius, uint8_t maxDigits,
     writeUnsignedValue(value, radius, maxDigits, pad);
 }
 
-#if defined(AVR)
-
-//------------------------------------------------------------------------------
-// Display uint32_t
-//------------------------------------------------------------------------------
-void LKM1638Board::print(uint32_t value)
-{
-    writeUnsignedValue(value, DEC, 8, 1);
-}
-
-void LKM1638Board::print(uint32_t value, uint8_t radius)
-{
-    writeUnsignedValue(value, radius, 8, 1);
-}
-
-void LKM1638Board::print(uint32_t value, uint8_t radius, uint8_t maxDigits)
-{
-    writeUnsignedValue(value, radius, maxDigits, 1);
-}
-
-void LKM1638Board::print(uint32_t value, uint8_t radius, uint8_t maxDigits,
-                         uint8_t pad)
-{
-    writeUnsignedValue(value, radius, maxDigits, pad);
-}
-
-#else
 //------------------------------------------------------------------------------
 // Display unsigned long
 //------------------------------------------------------------------------------
 void LKM1638Board::print(unsigned long value)
 {
-  writeUnsignedValue((uint32_t)value, DEC, 8, 1);
+    writeUnsignedValue((uint32_t)value, DEC, 8, 1);
 }
 
 void LKM1638Board::print(unsigned long value, uint8_t radius)
 {
-  writeUnsignedValue((uint32_t)value, radius, 8, 1);
+    writeUnsignedValue((uint32_t)value, radius, 8, 1);
 }
 
 void LKM1638Board::print(unsigned long value, uint8_t radius, uint8_t maxDigits)
 {
-  writeUnsignedValue((uint32_t)value, radius, maxDigits, 1);
+    writeUnsignedValue((uint32_t)value, radius, maxDigits, 1);
 }
 
 void LKM1638Board::print(unsigned long value, uint8_t radius, uint8_t maxDigits,
                          uint8_t pad)
 {
-  writeUnsignedValue((uint32_t)value, radius, maxDigits, pad);
+    writeUnsignedValue((uint32_t)value, radius, maxDigits, pad);
 }
-#endif
 
 //------------------------------------------------------------------------------
 // Display int8_t
@@ -472,45 +444,23 @@ void LKM1638Board::print(int16_t value, uint8_t radius, uint8_t maxDigits)
     writeSignedValue(value, radius, maxDigits);
 }
 
-#if defined(AVR)
-
-//------------------------------------------------------------------------------
-// Display int32_t
-//------------------------------------------------------------------------------
-void LKM1638Board::print(int32_t value)
-{
-    writeSignedValue(value, DEC, 8);
-}
-
-void LKM1638Board::print(int32_t value, uint8_t radius)
-{
-    writeSignedValue(value, radius, 8);
-}
-
-void LKM1638Board::print(int32_t value, uint8_t radius, uint8_t maxDigits)
-{
-    writeSignedValue(value, radius, maxDigits);
-}
-
-#else
 //------------------------------------------------------------------------------
 // Display long
 //------------------------------------------------------------------------------
 void LKM1638Board::print(long value)
 {
-  writeSignedValue((int32_t)value, DEC, 8);
+    writeSignedValue((int32_t)value, DEC, 8);
 }
 
 void LKM1638Board::print(long value, uint8_t radius)
 {
-  writeSignedValue((int32_t)value, radius, 8);
+    writeSignedValue((int32_t)value, radius, 8);
 }
 
 void LKM1638Board::print(long value, uint8_t radius, uint8_t maxDigits)
 {
-  writeSignedValue((int32_t)value, radius, maxDigits);
+    writeSignedValue((int32_t)value, radius, maxDigits);
 }
-#endif
 
 //------------------------------------------------------------------------------
 // Position, pad and write value to 7-segment display

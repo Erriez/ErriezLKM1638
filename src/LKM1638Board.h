@@ -109,17 +109,10 @@ public:
     virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits);
     virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
-#if defined(AVR)
-    virtual void print(uint32_t value);
-    virtual void print(uint32_t value, uint8_t radius);
-    virtual void print(uint32_t value, uint8_t radius, uint8_t maxDigits);
-    virtual void print(uint32_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
-#else
     virtual void print(unsigned long value);
     virtual void print(unsigned long value, uint8_t radius);
     virtual void print(unsigned long value, uint8_t radius, uint8_t maxDigits);
     virtual void print(unsigned long value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
-#endif
 
     // Display signed value 8, 16 or 32-bit
     virtual void print(int8_t value);
@@ -130,15 +123,9 @@ public:
     virtual void print(int16_t value, uint8_t radius);
     virtual void print(int16_t value, uint8_t radius, uint8_t maxDigits);
 
-#if defined(AVR)
-    virtual void print(int32_t value);
-    virtual void print(int32_t value, uint8_t radius);
-    virtual void print(int32_t value, uint8_t radius, uint8_t maxDigits);
-#else
     virtual void print(long value);
     virtual void print(long value, uint8_t radius);
     virtual void print(long value, uint8_t radius, uint8_t maxDigits);
-#endif
 
 protected:
     uint8_t _leds[NUM_DIGITS];
