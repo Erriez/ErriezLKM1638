@@ -89,9 +89,9 @@ Inheritance diagram for LKM1638Board:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39c39f9f20af9828907b904e34492de1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#a39c39f9f20af9828907b904e34492de1">LKM1638Board</a> (uint8_t sclPin, uint8_t dioPin, uint8_t stbPin)</td></tr>
-<tr class="memdesc:a39c39f9f20af9828907b904e34492de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">LKM1638 constructor.  <a href="#a39c39f9f20af9828907b904e34492de1">More...</a><br /></td></tr>
-<tr class="separator:a39c39f9f20af9828907b904e34492de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8526eb1bc413de3ea12c78b79d5d4bef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#a8526eb1bc413de3ea12c78b79d5d4bef">LKM1638Board</a> (uint8_t clkPin, uint8_t dioPin, uint8_t stbPin)</td></tr>
+<tr class="memdesc:a8526eb1bc413de3ea12c78b79d5d4bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">LKM1638 constructor.  <a href="#a8526eb1bc413de3ea12c78b79d5d4bef">More...</a><br /></td></tr>
+<tr class="separator:a8526eb1bc413de3ea12c78b79d5d4bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46b3777daa6d86b5a0e871fb99604898"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#a46b3777daa6d86b5a0e871fb99604898">getButtons</a> ()</td></tr>
 <tr class="memdesc:a46b3777daa6d86b5a0e871fb99604898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read buttons.  <a href="#a46b3777daa6d86b5a0e871fb99604898">More...</a><br /></td></tr>
 <tr class="separator:a46b3777daa6d86b5a0e871fb99604898"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -226,14 +226,17 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a1dc0720aa961510a147cb7e3db7d7873"><td class="memItemLeft" align="right" valign="top"><a id="a1dc0720aa961510a147cb7e3db7d7873"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_pos</b></td></tr>
-<tr class="separator:a1dc0720aa961510a147cb7e3db7d7873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0ecb25b0069693153b4c99b1fd0c0c6"><td class="memItemLeft" align="right" valign="top"><a id="ad0ecb25b0069693153b4c99b1fd0c0c6"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_leds</b> [<a class="el" href="_l_k_m1638_board_8h.html#a0b79fa1bdb1363440df485691386a74c">NUM_DIGITS</a>]</td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#ad0ecb25b0069693153b4c99b1fd0c0c6">_leds</a> [<a class="el" href="_l_k_m1638_board_8h.html#a0b79fa1bdb1363440df485691386a74c">NUM_DIGITS</a>]</td></tr>
+<tr class="memdesc:ad0ecb25b0069693153b4c99b1fd0c0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">LED digits. <br /></td></tr>
 <tr class="separator:ad0ecb25b0069693153b4c99b1fd0c0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dc0720aa961510a147cb7e3db7d7873"><td class="memItemLeft" align="right" valign="top"><a id="a1dc0720aa961510a147cb7e3db7d7873"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#a1dc0720aa961510a147cb7e3db7d7873">_pos</a></td></tr>
+<tr class="memdesc:a1dc0720aa961510a147cb7e3db7d7873"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print position. <br /></td></tr>
+<tr class="separator:a1dc0720aa961510a147cb7e3db7d7873"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2de77cd6c33672edb5a3288b09cdcbfc"><td class="memItemLeft" align="right" valign="top"><a id="a2de77cd6c33672edb5a3288b09cdcbfc"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_l_k_m1638_board.html#a2de77cd6c33672edb5a3288b09cdcbfc">_dots</a></td></tr>
+<tr class="memdesc:a2de77cd6c33672edb5a3288b09cdcbfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dot LED's. <br /></td></tr>
 <tr class="separator:a2de77cd6c33672edb5a3288b09cdcbfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -241,8 +244,8 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 
 <p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8h_source.html#l00065">65</a> of file <a class="el" href="_l_k_m1638_board_8h_source.html">LKM1638Board.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a39c39f9f20af9828907b904e34492de1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39c39f9f20af9828907b904e34492de1">&#9670;&nbsp;</a></span>LKM1638Board()</h2>
+<a id="a8526eb1bc413de3ea12c78b79d5d4bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8526eb1bc413de3ea12c78b79d5d4bef">&#9670;&nbsp;</a></span>LKM1638Board()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +254,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
           <td class="memname">LKM1638Board::LKM1638Board </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>sclPin</em>, </td>
+          <td class="paramname"><em>clkPin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -276,9 +279,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 <p>LKM1638 constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sclPin</td><td>Clock </td></tr>
+    <tr><td class="paramname">clkPin</td><td>Clock pin </td></tr>
     <tr><td class="paramname">dioPin</td><td>Data pin (bi-directional) </td></tr>
-    <tr><td class="paramname">stbPin</td><td>Enable (low is enable, also called strobe pin) </td></tr>
+    <tr><td class="paramname">stbPin</td><td>Strobe pin (low is enable) </td></tr>
   </table>
   </dd>
 </dl>
@@ -403,7 +406,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00629">629</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00576">576</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -553,7 +556,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of digits </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00608">608</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00555">555</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1034,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Swapped bits </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00664">664</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00611">611</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -1068,7 +1071,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Swapped LED bits </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00653">653</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00600">600</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -1105,7 +1108,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Swapped position </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00642">642</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00589">589</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1198,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00560">560</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00507">507</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
@@ -1256,13 +1259,13 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_dots</b></td></tr
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00525">525</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_l_k_m1638_board_8cpp_source.html#l00472">472</a> of file <a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_l_k_m1638_board_8h_source.html">LKM1638Board.h</a></li>
-<li>src/<a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a></li>
+<li><a class="el" href="_l_k_m1638_board_8h_source.html">LKM1638Board.h</a></li>
+<li><a class="el" href="_l_k_m1638_board_8cpp_source.html">LKM1638Board.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

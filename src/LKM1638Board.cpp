@@ -23,7 +23,7 @@
  */
 
 /*!
- * \file LKM1638Board.h
+ * \file LKM1638Board.cpp
  * \brief JY-LKM1638 board v1.1 library for Arduino
  * \details
  *   https://github.com/Erriez/ErriezTM1638
