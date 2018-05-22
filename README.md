@@ -210,16 +210,22 @@ lkm1638.setSegmentsDigit(0, SEGMENTS_C);
 lkm1638.setSegmentsDigit(0, 0b0001000);
 ```
 
-## Installation
-1. Start the Arduino IDE.
-2. Download the latest version from:  
-   https://github.com/Erriez/ErriezLKM1638/archive/master.zip  
-   and  
-   https://github.com/Erriez/ErriezTM1638/archive/master.zip
-3. Click Sketch | Include Library | Add .ZIP Library... and select this ZIP.
-5. Run the example.
+## Documentation
+
+* [Doxygen online HTML](https://erriez.github.io/ErriezLKM1638)
+* [Doxygen PDF](https://github.com/Erriez/ErriezLKM1638/raw/master/docs/latex/refman.pdf)
+
 
 ## Library dependencies
-* [TM1638](https://github.com/Erriez/ErriezTM1638)  
-```git clone https://github.com/Erriez/ErriezTM1638.git```
 
+* [Erriez TM1638](https://github.com/Erriez/ErriezTM1638)
+
+
+## Library installation
+
+Please refer to the [Wiki](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki) page.
+
+
+## Other Arduino Libraries and Sketches from Erriez
+
+* [Erriez Libraries and Sketches](https://github.com/Erriez/ErriezArduinoLibrariesAndSketches)
