@@ -1,0 +1,270 @@
+This is a J\+Y-\/\+M\+CU J\+Y-\/\+L\+K\+M1638 library for Arduino.
+
+
+
+This board supports\+:
+\begin{DoxyItemize}
+\item 3-\/wire serial interface
+\item T\+M1638 L\+ED driver and key-\/scan chip
+\item Power\+: 3.\+3V .. 5V
+\item 8 digits 7-\/segment display
+\item 8 dual color L\+E\+Ds
+\item 8 buttons
+\end{DoxyItemize}
+
+\subsection*{Order number}
+
+\href{https://www.google.nl/search?q=JY-LKM1638}{\tt Google.\+com} \href{http://www.dx.com/p/8x-digital-tube-8x-key-8x-double-color-led-module-81873#.WmR3YTco9aR}{\tt D\+X.\+com S\+K\+U\+: 81873} \href{https://www.aliexpress.com/item/F71A-8-Digital-Tube-8-Key-8-Double-Color-LED-Module-TM1638-Can-be-Cascaded-Replace/2034831073.html?ws_ab_test=searchweb0_0,searchweb201602_1_10065_10344_10068_10342_10343_10340_10341_10084_10083_10618_10304_10615_10307_10301_10313_10059_10534_100031_10103_441_10624_442_10623_10622_10621_10620_10142,searchweb201603_36,ppcSwitch_5&algo_expid=539835e4-fcbf-4f84-870e-c972d12374fa-36&algo_pvid=539835e4-fcbf-4f84-870e-c972d12374fa&priceBeautifyAB=2}{\tt Ali\+Express.\+com} \href{https://www.ebay.com/itm/8xDigital-Tube-8x-Key-8x-Double-Color-LED-Module-TM1638-For-AVR-Arduino-NEW/172744309516?epid=814196876&hash=item28385cfb0c:g:bmsAAOSw-29ZS4-c}{\tt e\+Bay.\+com} Many more...
+
+{\bfseries Note\+:} This library has not been tested with a different \char`\"{}\+L\+E\+D\&\+K\+E\+Y\char`\"{} board.
+
+\subsection*{Hardware}
+
+Connect G\+ND and +5V to the Arduino board.
+
+Connect the following pins to the Arduino D\+I\+G\+I\+T\+AL pins\+:
+\begin{DoxyItemize}
+\item D\+IO (Bi-\/directional data input/output)
+\item S\+TB (Chip select)
+\item C\+LK (Clock)
+\end{DoxyItemize}
+
+Note\+: Some Arduino boards cannot deliver enough 5V power to drive the L\+ED\textquotesingle{}s.
+
+\subsubsection*{Pins}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*5{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\centering {\bf Pin }&\PBS\centering {\bf L\+K\+M-\/1638 }&\PBS\centering {\bf Arduino U\+NO / Nano / Mega2560 / Leonardo / Pro Micro }&\PBS\centering {\bf Node M\+CU }&\PBS\centering {\bf L\+O\+L\+I\+N32  }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\PBS\centering {\bf Pin }&\PBS\centering {\bf L\+K\+M-\/1638 }&\PBS\centering {\bf Arduino U\+NO / Nano / Mega2560 / Leonardo / Pro Micro }&\PBS\centering {\bf Node M\+CU }&\PBS\centering {\bf L\+O\+L\+I\+N32  }\\\cline{1-5}
+\endhead
+\PBS\centering 1 &\PBS\centering V\+CC &\PBS\centering 5V (or 3.\+3V) &\PBS\centering G\+ND &\PBS\centering G\+ND \\\cline{1-5}
+\PBS\centering 2 &\PBS\centering G\+ND &\PBS\centering G\+ND &\PBS\centering 3\+V3 &\PBS\centering 3\+V3 \\\cline{1-5}
+\PBS\centering 3 &\PBS\centering C\+LK &\PBS\centering Digital pin 2 &\PBS\centering D2 &\PBS\centering 0 \\\cline{1-5}
+\PBS\centering 4 &\PBS\centering D\+IO &\PBS\centering Digital pin 3 &\PBS\centering D3 &\PBS\centering 4 \\\cline{1-5}
+\PBS\centering 5 &\PBS\centering S\+T\+B1 &\PBS\centering Digital pin 4 &\PBS\centering D4 &\PBS\centering 5 \\\cline{1-5}
+\end{longtabu}
+
+
+\subsection*{Examples}
+
+Examples $\vert$ J\+Y-\/\+L\+K\+M1638\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Brightness/Brightness.ino}{\tt Brightness}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Buttons/Buttons.ino}{\tt Buttons}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Counter/Counter.ino}{\tt Counter}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Date/Date.ino}{\tt Date}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Demo/Demo.ino}{\tt Demo}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Temperature/Temperature.ino}{\tt Temperature}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/TestLEDs/TestLEDs.ino}{\tt Test\+L\+E\+Ds}
+\item \href{https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Time/Time.ino}{\tt Time}
+\end{DoxyItemize}
+
+\subsection*{Documentation}
+
+
+\begin{DoxyItemize}
+\item \href{https://erriez.github.io/ErriezLKM1638}{\tt Doxygen online H\+T\+ML}
+\item \href{https://github.com/Erriez/ErriezLKM1638/raw/gh-pages/latex/ErriezLKM1638.pdf}{\tt Doxygen P\+DF}
+\end{DoxyItemize}
+
+\#\# Terms\+: 
+\begin{DoxyCode}
+1 Segment:   One LED in a 7-segment display
+2 Digit:     One 7-segment display (Value 0..9 and A..F)
+3 Dot:       The dot LED in a 7-segment digit
+4 Pos:       Print position 0...7 (MSB bit 7: left .. LB bit 0: right)
+5 Radius:    DEC for decimal, HEX for hexadecimal, BIN for binary
+6 MaxDigits: Reserve a number of digits to print a value
+7 Pad:       Display fixed number of digits with 0 padding
+8 Overflow:  Value does not fit on the display, display minus chars
+9 LSB:       Most right digit, dual color LED8 or switch (SW8)
+10 MSB:       Most left digit,  dual color LED1 or switch (SW1)
+\end{DoxyCode}
+
+
+\subsection*{Usage}
+
+\#\#\# Initialization 
+\begin{DoxyCode}
+1 \{c++\}
+2 #include <LKM1638Board.h>
+3 
+4 // Connect display pins to the Arduino DIGITAL pins
+5 #define TM1638\_CLK\_PIN   2
+6 #define TM1638\_DIO\_PIN   3
+7 #define TM1638\_STB0\_PIN  4
+8 
+9 // Create LKM1638 board
+10 LKM1638Board lkm1638(TM1638\_CLK\_PIN, TM1638\_DIO\_PIN, TM1638\_STB0\_PIN);
+11 
+12 void setup()
+13 \{
+14     // Initialize LKM1638Board
+15     lkm1638.begin();
+16 \}
+\end{DoxyCode}
+
+
+\subsubsection*{Read 8 buttons}
+
+Buttons are 8-\/bit with bit 7 most left switch, bit 0 most right switch.
+
+Note\+: The text on the board counts from S1 to S8!
+
+
+\begin{DoxyCode}
+1 \{c++\}
+2 uint8\_t buttons = lkm1638.getButtons();
+\end{DoxyCode}
+
+
+\subsubsection*{Control 8 dual color L\+ED\textquotesingle{}s}
+
+Dual color L\+ED 7 = most left (Text L\+E\+D8) Dual color L\+ED 0 = most right (Text L\+E\+D0)
+
+
+\begin{DoxyCode}
+1 \{c++\}
+2 // Turn LED 0 red on (firt LED on the right)
+3 lkm1638.setColorLED(0, LedRed);  
+4 
+5 // Turn LED 0 green on
+6 lkm1638.setColorLED(0, LedGreen);
+7 
+8 // Turn LED 0 off
+9 lkm1638.setColorLED(0, LedOff);
+10 
+11 // Turn multiple LEDs on, color red
+12 lkm1638.colorLEDsOn(0xA9, LedRed);
+13 
+14 // Turn multiple LEDs off
+15 lkm1638.colorLEDsOff(0x1F);
+\end{DoxyCode}
+
+
+\#\#\# Clear display 
+\begin{DoxyCode}
+1 \{c++\}
+2 lkm1638.clear();
+\end{DoxyCode}
+
+
+\subsubsection*{Set/get print display position}
+
+The print position can be set from 0..7. 7 = most left digit 0 = most right digit
+
+
+\begin{DoxyCode}
+1 \{c++\}
+2 // Set postion 4
+3 lkm1638.setPrintPos(4);
+4 
+5 // Get print position
+6 uint8\_t pos = lkm1638.getPrintPos();
+\end{DoxyCode}
+
+
+\subsubsection*{Print variable on 7-\/segment display}
+
+Printing starts from digit right to left with an optional maximum number of digits.
+
+Minus \textquotesingle{}-\/\textquotesingle{} chars will be displayed when the value is out of range, or does not fit on the display.
+
+Optional padding can be used to display zero\textquotesingle{}s. This is for example useful to print hours and minutes with fixed 2 digits.
+
+
+\begin{DoxyCode}
+1 \{c++\}
+2 // Print int16\_t on print position
+3 lkm1638.print(1234);
+4 
+5 // Print signed 32-bit value
+6 lkm1638.print(-1234567);
+7 
+8 // Print 16-bit unsigned casted value
+9 lkm1638.print((uint16\_t)65535);
+10 
+11 // Print 16-bit hexadecimal unsigned value
+12 uint16\_t value = 0xBEEF;
+13 lkm1638.print(value, HEX); 
+14 
+15 // Print value with maximum 2 digits
+16 uint8\_t value = 99;
+17 lkm1638.print(value++, DEC, 2);
+18 
+19 // Print -- when value is greater than 2 digits 
+20 lkm1638.print(value, DEC, 2); 
+21 
+22 // Print 16-bit unsigned value with max 4 digits and 4 digits padding: 0009 
+23 uint16\_t value = 9;
+24 lkm1638.print(value, DEC, 4, 4);
+25 
+26 // Print 32-bit unsigned value
+27 lkm1638.print(12345678UL);
+28 
+29 // Print binary uint8\_t 0xA9 = 10101001
+30 uint8\_t value = 0xA9;
+31 lkm1638.print(value, BIN, 8, 8);
+\end{DoxyCode}
+
+
+\#\#\# Control 8 display dots 
+\begin{DoxyCode}
+1 \{c++\}
+2 // Turn one dot on in digit 7 (most left)
+3 lkm1638.dotOn(7);
+4 
+5 // Turn one dot off in digit 0 (most right)
+6 lkm1638.dotOff(0);
+7 
+8 // Set multiple dots on and off
+9 lkm1638.setDots(0x85);
+\end{DoxyCode}
+
+
+\#\#\# Display special characters 
+\begin{DoxyCode}
+1 \{c++\}
+2 // Turn digit off
+3 lkm1638.setSegmentsDigit(5, SEGMENTS\_OFF);
+4 
+5 // Display minus character
+6 lkm1638.setSegmentsDigit(4, SEGMENTS\_MINUS);
+7 
+8 // Display degree selsius symbol + C
+9 lkm1638.setSegmentsDigit(1, SEGMENTS\_DEGREE);
+10 lkm1638.setSegmentsDigit(0, SEGMENTS\_C);
+\end{DoxyCode}
+
+
+\#\#\# Write a custom character to the display 
+\begin{DoxyCode}
+1 \{c++\}
+2 // Display single LED in a digit
+3 lkm1638.setSegmentsDigit(0, 0b0001000);
+\end{DoxyCode}
+
+
+\subsection*{Library dependencies}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/Erriez/ErriezTM1638}{\tt Erriez T\+M1638}
+\end{DoxyItemize}
+
+\subsection*{Library installation}
+
+Please refer to the \href{https://github.com/Erriez/ErriezArduinoLibrariesAndSketches/wiki}{\tt Wiki} page.
+
+\subsection*{Other Arduino Libraries and Sketches from Erriez}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/Erriez/ErriezArduinoLibrariesAndSketches}{\tt Erriez Libraries and Sketches} 
+\end{DoxyItemize}
