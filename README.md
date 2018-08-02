@@ -21,6 +21,7 @@ Many more...
 
 **Note:** This library has not been tested with a different "LED&KEY" board.
 
+
 ## Hardware
 
 Connect GND and +5V to the Arduino board.
@@ -32,6 +33,7 @@ Connect the following pins to the Arduino DIGITAL pins:
 
 Note: Some Arduino boards cannot deliver enough 5V power to drive the LED's.
 
+
 ### Pins
 
 | Pin  | LKM-1638 | Arduino UNO / Nano / Mega2560 / Leonardo / Pro Micro | Node MCU | LOLIN32 |
@@ -41,6 +43,7 @@ Note: Some Arduino boards cannot deliver enough 5V power to drive the LED's.
 |  3   |   CLK    |                    Digital pin 2                     |    D2    |    0    |
 |  4   |   DIO    |                    Digital pin 3                     |    D3    |    4    |
 |  5   |   STB1   |                    Digital pin 4                     |    D4    |    5    |
+
 
 ## Examples
 Examples | JY-LKM1638:
@@ -52,6 +55,13 @@ Examples | JY-LKM1638:
 * [Temperature](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Temperature/Temperature.ino)
 * [TestLEDs](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/TestLEDs/TestLEDs.ino)  
 * [Time](https://github.com/Erriez/ErriezLKM1638/blob/master/examples/Time/Time.ino)
+
+
+## Documentation
+
+* [Doxygen online HTML](https://erriez.github.io/ErriezLKM1638)
+* [Doxygen PDF](https://github.com/Erriez/ErriezLKM1638/raw/gh-pages/latex/ErriezLKM1638.pdf)
+
 
 ## Terms:
 ```
@@ -66,6 +76,7 @@ Overflow:  Value does not fit on the display, display minus chars
 LSB:       Most right digit, dual color LED8 or switch (SW8)
 MSB:       Most left digit,  dual color LED1 or switch (SW1)
 ```
+
 
 ## Usage
 
@@ -209,11 +220,6 @@ lkm1638.setSegmentsDigit(0, SEGMENTS_C);
 // Display single LED in a digit
 lkm1638.setSegmentsDigit(0, 0b0001000);
 ```
-
-## Documentation
-
-* [Doxygen online HTML](https://erriez.github.io/ErriezLKM1638)
-* [Doxygen PDF](https://github.com/Erriez/ErriezLKM1638/raw/master/docs/latex/refman.pdf)
 
 
 ## Library dependencies
