@@ -70,80 +70,80 @@ public:
     LKM1638Board(uint8_t clkPin, uint8_t dioPin, uint8_t stbPin);
 
     // Get buttons
-    virtual uint8_t getButtons();
+    uint8_t getButtons();
 
     // Turn all LED's off
-    virtual void clear();
+    void clear();
 
     // Set dual color LED's
-    virtual void setColorLED(uint8_t led, LedColor color);
-    virtual void colorLEDsOn(uint8_t leds, LedColor color);
-    virtual void colorLEDsOff(uint8_t leds);
+    void setColorLED(uint8_t led, LedColor color);
+    void colorLEDsOn(uint8_t leds, LedColor color);
+    void colorLEDsOff(uint8_t leds);
 
     // Refresh 7-segment display
-    virtual void refresh();
+    void refresh();
 
     // Control 7-segment dots
-    virtual void dotOn(uint8_t pos);
-    virtual void dotOff(uint8_t pos);
-    virtual void setDots(uint8_t dots);
+    void dotOn(uint8_t pos);
+    void dotOff(uint8_t pos);
+    void setDots(uint8_t dots);
 
     // Set/get position for print functions
-    virtual void setPrintPos(uint8_t pos);
-    virtual uint8_t getPrintPos();
+    void setPrintPos(uint8_t pos);
+    uint8_t getPrintPos();
 
     // Write
-    virtual void setSegmentsDigit(uint8_t pos, uint8_t leds);
-    virtual void setDigit(uint8_t pos, uint8_t digit);
+    void setSegmentsDigit(uint8_t pos, uint8_t leds);
+    void setDigit(uint8_t pos, uint8_t digit);
 
     // Notes:  Overloaded functions with default arguments are not allowed, so
     // create multiple functions with different number of arguments.
 
     // Display unsigned value 8, 16 or 32-bit with optional padding
-    virtual void print(uint8_t value);
-    virtual void print(uint8_t value, uint8_t radius);
-    virtual void print(uint8_t value, uint8_t radius, uint8_t maxDigits);
-    virtual void print(uint8_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+    void print(uint8_t value);
+    void print(uint8_t value, uint8_t radius);
+    void print(uint8_t value, uint8_t radius, uint8_t maxDigits);
+    void print(uint8_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
-    virtual void print(uint16_t value);
-    virtual void print(uint16_t value, uint8_t radius);
-    virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits);
-    virtual void print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+    void print(uint16_t value);
+    void print(uint16_t value, uint8_t radius);
+    void print(uint16_t value, uint8_t radius, uint8_t maxDigits);
+    void print(uint16_t value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
-    virtual void print(unsigned long value);
-    virtual void print(unsigned long value, uint8_t radius);
-    virtual void print(unsigned long value, uint8_t radius, uint8_t maxDigits);
-    virtual void print(unsigned long value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
+    void print(unsigned long value);
+    void print(unsigned long value, uint8_t radius);
+    void print(unsigned long value, uint8_t radius, uint8_t maxDigits);
+    void print(unsigned long value, uint8_t radius, uint8_t maxDigits, uint8_t pad);
 
     // Display signed value 8, 16 or 32-bit
-    virtual void print(int8_t value);
-    virtual void print(int8_t value, uint8_t radius);
-    virtual void print(int8_t value, uint8_t radius, uint8_t maxDigits);
+    void print(int8_t value);
+    void print(int8_t value, uint8_t radius);
+    void print(int8_t value, uint8_t radius, uint8_t maxDigits);
 
-    virtual void print(int16_t value);
-    virtual void print(int16_t value, uint8_t radius);
-    virtual void print(int16_t value, uint8_t radius, uint8_t maxDigits);
+    void print(int16_t value);
+    void print(int16_t value, uint8_t radius);
+    void print(int16_t value, uint8_t radius, uint8_t maxDigits);
 
-    virtual void print(long value);
-    virtual void print(long value, uint8_t radius);
-    virtual void print(long value, uint8_t radius, uint8_t maxDigits);
+    void print(long value);
+    void print(long value, uint8_t radius);
+    void print(long value, uint8_t radius, uint8_t maxDigits);
 
 protected:
     uint8_t _leds[NUM_DIGITS];  //!< LED digits
     uint8_t _pos;               //!< Print position
     uint8_t _dots;              //!< Dot LED's
 
-    virtual void writeDigit(uint8_t pos);
-    virtual void writeUnsignedValue(uint32_t value, uint8_t radius, uint8_t maxDigits,
+    void writeDigit(uint8_t pos);
+    void writeUnsignedValue(uint32_t value, uint8_t radius, uint8_t maxDigits,
                                     uint8_t pad);
-    virtual void writeSignedValue(int32_t value, uint8_t radius, uint8_t maxDigits);
-    virtual uint8_t getNumDigits(uint32_t value, uint8_t radius);
-    virtual void displayOverflow(uint8_t numDigits);
+    void writeSignedValue(int32_t value, uint8_t radius, uint8_t maxDigits);
+    uint8_t getNumDigits(uint32_t value, uint8_t radius);
+    void displayOverflow(uint8_t numDigits);
 
     // Swap bits and bytes
-    virtual uint8_t swapBits(uint8_t data);
-    virtual uint8_t swapPos(uint8_t pos);
-    virtual uint8_t swapLeds(uint8_t led);
+    uint8_t swapBits(uint8_t data);
+    uint8_t swapPos(uint8_t pos);
+    uint8_t swapLeds(uint8_t led);
 };
 
 #endif // LKM1638_BOARD_H__
