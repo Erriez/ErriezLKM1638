@@ -82,7 +82,7 @@ MSB:       Most left digit,  dual color LED1 or switch (SW1)
 
 ### Initialization
 ```c++
-#include <LKM1638Board.h>
+#include <ErriezLKM1638Board.h>
   
 // Connect display pins to the Arduino DIGITAL pins
 #define TM1638_CLK_PIN   2

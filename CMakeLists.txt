@@ -61,18 +61,18 @@ include_directories(
 generate_arduino_library(
         TM1638Lib
         SRCS
-            ${TM1638_LIBRARY_DIR}/TM1638.cpp
+            ${TM1638_LIBRARY_DIR}/ErriezTM1638.cpp
         HDRS
-            ${TM1638_LIBRARY_DIR}/TM1638.h
+            ${TM1638_LIBRARY_DIR}/ErriezTM1638.h
 )
 
 # Generate library
 generate_arduino_library(
         LKM1638Lib
         SRCS
-            ${LKM1638_LIBRARY_DIR}/LKM1638Board.cpp
+            ${LKM1638_LIBRARY_DIR}/ErriezLKM1638Board.cpp
         HDRS
-            ${LKM1638_LIBRARY_DIR}/LKM1638Board.h
+            ${LKM1638_LIBRARY_DIR}/ErriezLKM1638Board.h
 )
 
 # Configure project

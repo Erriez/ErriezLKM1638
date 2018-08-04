@@ -23,7 +23,7 @@
  */
 
 /*!
- * \file LKM1638Board.cpp
+ * \file ErriezLKM1638Board.cpp
  * \brief JY-LKM1638 board v1.1 library for Arduino
  * \details
  *   Source:         https://github.com/Erriez/ErriezTM1638
@@ -37,7 +37,7 @@
 #include <pgmspace.h>
 #endif
 
-#include "LKM1638Board.h"
+#include "ErriezLKM1638Board.h"
 
 /* 7-segment bits:
    - 0 -

@@ -23,7 +23,7 @@
  */
 
 /*!
- * \file LKM1638Board.h
+ * \file ErriezLKM1638Board.h
  * \brief JY-LKM1638 board v1.1 library for Arduino
  * \details
  *   Source:         https://github.com/Erriez/ErriezTM1638
@@ -31,12 +31,12 @@
  *   Documentation:  https://erriez.github.io/ErriezLKM1638
  */
 
-#ifndef LKM1638_BOARD_H__
-#define LKM1638_BOARD_H__
+#ifndef ERRIEZ_LKM1638_BOARD_H_
+#define ERRIEZ_LKM1638_BOARD_H_
 
 #include <Arduino.h>
 
-#include <TM1638.h>
+#include <ErriezTM1638.h>
 
 #define NUM_COLOR_LEDS    8 //!< Number of dual color LED's
 #define NUM_DIGITS        8 //!< Number of digits
@@ -146,4 +146,4 @@ protected:
     uint8_t swapLeds(uint8_t led);
 };
 
-#endif // LKM1638_BOARD_H__
+#endif // ERRIEZ_LKM1638_BOARD_H_

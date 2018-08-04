@@ -30,7 +30,7 @@
  */
 
 #include <Arduino.h>
-#include <LKM1638Board.h>
+#include <ErriezLKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
 #if ARDUINO_ARCH_AVR
