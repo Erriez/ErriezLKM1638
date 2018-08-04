@@ -29,7 +29,6 @@
  *   https://github.com/Erriez/ArduinoLibraryLKM1638
  */
 
-#include <Arduino.h>
 #include <ErriezLKM1638Board.h>
 
 // Connect display pins to the Arduino DIGITAL pins
