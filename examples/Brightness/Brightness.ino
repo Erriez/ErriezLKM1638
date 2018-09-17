@@ -25,7 +25,7 @@
 /* JY-LKM1638 board v1.1 brightness example
  *
  * Required libraries:
- *   https://github.com/Erriez/TM1638
+ *   https://github.com/Erriez/ErriezTM1638
  *   https://github.com/Erriez/ErriezLKM1638
  */
 
