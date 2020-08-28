@@ -60,7 +60,7 @@ Examples | JY-LKM1638:
 ## Documentation
 
 * [Doxygen online HTML](https://erriez.github.io/ErriezLKM1638)
-* [Doxygen PDF](https://github.com/Erriez/ErriezLKM1638/raw/gh-pages/latex/ErriezLKM1638.pdf)
+* [Doxygen PDF](https://github.com/Erriez/ErriezLKM1638/raw/master/ErriezLKM1638.pdf)
 
 
 ## Terms:
